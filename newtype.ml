@@ -1,5 +1,5 @@
 (* Base kinds *)
-type star = Kind_star
+type 'a star = 'a
 
 (* Representation of type application.  This corresponds to the "apply"
    variant type in a defunctionalized program.  Application is postfix. *)
@@ -9,34 +9,31 @@ type ('p, 'f) app = ..
 type ('a, 'b) iso = { inj : 'a -> 'b; prj : 'b -> 'a; }
 
 (* Newtype type constructors: *)
-type ('rep, 'brand, 'kind) newtype =
+type ('rep, 'brand) newtype =
     (* Base type constructor *)
-    Star : ('rep, 'brand) iso -> ('rep, 'brand, star) newtype
+    Star : ('rep, 'brand) iso -> ('rep star, 'brand) newtype
 
     (* Arrow type constructor *)
-  | Arr : ('rep2, ('brand1, 'brand2) app, 'kind2) newtype -> 
-          ('brand1 -> 'rep2, 'brand2, 'kind1 -> 'kind2) newtype
+  | Arr : ('rep, ('arg, 'brand) app) newtype -> ('arg -> 'rep, 'brand) newtype
 
 (* Argument instantiation *)
-let (~~) : type repr brand1 brand2 kind1 kind2.
-  (brand2 -> repr, brand1, kind1 -> kind2) newtype ->
-  (repr, (brand2, brand1) app, kind2) newtype =
+let (~~) : 'r 'b 'arg. ('arg -> 'r, 'b) newtype -> ('r, ('arg, 'b) app) newtype =
   fun (Arr f) -> f
 
 
 (* Injection operates at kind Star. *)
-let inj : 'rep 'brand. ('rep, 'brand, star) newtype -> 'rep -> 'brand =
+let inj : 'rep 'brand. ('rep star, 'brand) newtype -> 'rep -> 'brand =
   fun (Star {inj}) -> inj
 
 (* Projection operates at kind Star. *)
-let prj : 'rep 'brand. ('rep, 'brand, star) newtype -> 'brand -> 'rep =
+let prj : 'rep 'brand. ('rep star, 'brand) newtype -> 'brand -> 'rep =
   fun (Star {prj}) -> prj
 
 (* Some useful constructors for building newtypes *)
 let primitive = Star { inj = (fun x -> x); prj = (fun x -> x) }
-module Param (S : sig type 'a repr type argkind end) : sig
+module Param (S : sig type 'a repr end) : sig
   type t
-  val t : ('a -> 'a S.repr, t, S.argkind -> star) newtype
+  val t : ('a -> 'a S.repr star, t) newtype
 end =
 struct
   type t
@@ -44,9 +41,9 @@ struct
   let t = Arr (Star { inj = (fun v -> App v); prj = (fun (App v) -> v) })
 end
 
-module Param2 (S : sig type ('a, 'b) repr type argkind1 type argkind2 end) : sig
+module Param2 (S : sig type ('a, 'b) repr end) : sig
   type t
-  val t : ('a -> 'b -> ('a, 'b) S.repr, t, S.argkind1 -> S.argkind2 -> star) newtype
+  val t : ('a -> 'b -> ('a, 'b) S.repr star, t) newtype
 end =
 struct
   type t
