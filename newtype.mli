@@ -40,7 +40,7 @@ val (~~) : ('a -> 'repr, 'brand) newtype -> ('repr, ('a, 'brand) app) newtype
 (** Instantiation of a parameterized newtype constructor.  For example, given a
 constructor for lists
 
-    val list : ('a -> 'a list, List.t, star -> star) newtype
+    val list : ('a -> 'a list star, List.t) newtype
 
 the expression
 
@@ -48,7 +48,7 @@ the expression
 
 has the type
 
-    ('_a list, ('_a, List.t) app, star) newtype
+    ('_a list star, ('_a, List.t) app) newtype
 
 and the weak type variables will be filled in by unification.
 *)
