@@ -1,67 +1,27 @@
 (** Operations on newtypes *)
 
-(**
-A newtype expression is either
-- a brand: a nullary type constructor that uniquely identifies a newtype, or
-- an application of a newtype expression to some OCaml type expression
+(** An isomorphism between types *)
+type ('a, 'b) iso
 
-That is,
-
-    newtype-expression := brand
-                        | (type-expression, newtype-expression) app
-
-Brands are created by the {!Param} and {!Param2} functors.  Applications are
-instantiations of the {!app} type constructor.
-*)
-
-type ('rep, 'brand) newtype
-(** A description of a newtype.  The components are
-
-- rep, the representation type, which has the form
-      arg1 -> arg2 -> ... -> argn -> t star
-  for some types arg1 ... argn, t.
-
-- brand, a newtype expression 
-*)
-
-type _ star
-(** The kind of types. *)
-
-type ('p, 'f) app
 (** Type expression application. *)
+type ('p, 'f) app
 
-val inj : ('rep star, 'brand) newtype -> 'rep -> 'brand
-(** Inject a value into a newtype.  Injection operates at kind {!star} *)
+(** Inject a value using an isomorphism *)
+val inj : ('a, 'b) iso -> 'a -> 'b
 
+(** Project a value using an isomorphism *)
 val prj : ('rep star, 'brand) newtype -> 'brand -> 'rep
-(** Projection a value from a newtype.  Projection operates at kind {!star} *)
 
-val (~~) : ('a -> 'repr, 'brand) newtype -> ('repr, ('a, 'brand) app) newtype
-(** Instantiation of a parameterized newtype constructor.  For example, given a
-constructor for lists
+val primitive : ('a, 'a) iso
 
-    val list : ('a -> 'a list star, List.t) newtype
-
-the expression
-
-    (~~ list)
-
-has the type
-
-    ('_a list star, ('_a, List.t) app) newtype
-
-and the weak type variables will be filled in by unification.
-*)
-
-
+(** Construct a newtype for a type constructor with one parameter. *)
 module Param (S : sig type 'a repr end) : sig
   type t
-  val t : ('a -> 'a S.repr star, t) newtype
+  val t : ('a S.repr, ('a, t) app) iso
 end
-(** Construct a newtype for a type constructor with one parameter. *)
 
+(** Construct a newtype for a type constructor with two parameters. *)
 module Param2 (S : sig type ('a, 'b) repr end) : sig
   type t
-  val t : ('a -> 'b -> ('a, 'b) S.repr star, t) newtype
+  val t : (('a, 'b) S.repr, ('a, ('b, t) app) app) iso
 end
-(** Construct a newtype for a type constructor with two parameters. *)
