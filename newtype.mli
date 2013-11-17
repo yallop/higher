@@ -10,7 +10,7 @@ type ('p, 'f) app
 val inj : ('a, 'b) iso -> 'a -> 'b
 
 (** Project a value using an isomorphism *)
-val prj : ('rep star, 'brand) newtype -> 'brand -> 'rep
+val prj : ('a, 'b) iso -> 'b -> 'a
 
 val primitive : ('a, 'a) iso
 
@@ -23,5 +23,5 @@ end
 (** Construct a newtype for a type constructor with two parameters. *)
 module Param2 (S : sig type ('a, 'b) repr end) : sig
   type t
-  val t : (('a, 'b) S.repr, ('a, ('b, t) app) app) iso
+  val t : (('a, 'b) S.repr, ('b, ('a, t) app) app) iso
 end

@@ -28,7 +28,7 @@ end
 
 module Param2 (S : sig type ('a, 'b) repr end) : sig
   type t
-  val t : (('a, 'b) S.repr, ('a, ('b, t) app) app) iso
+  val t : (('a, 'b) S.repr, ('b, ('a, t) app) app) iso
 end =
 struct
   type t
