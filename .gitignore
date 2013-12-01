@@ -1,3 +1,4 @@
-_build
-*.byte
-*.native
+*.cmi
+*.cmo
+*.cmx
+*.o
