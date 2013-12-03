@@ -28,48 +28,48 @@ end
 
 module Newtype2 (T : sig type ('a, 'b) t end) : sig
   type t
-  val inj : ('a, 'b) T.t -> ('b, ('a, t) app) app
-  val prj : ('b, ('a, t) app) app -> ('a, 'b) T.t
+  val inj : ('a, 'b) T.t -> ('a, ('b, t) app) app
+  val prj : ('a, ('b, t) app) app -> ('a, 'b) T.t
 end =
 struct
   type t
-  type (_, _) app += App : ('a, 'b) T.t -> ('b, ('a, t) app) app
+  type (_, _) app += App : ('a, 'b) T.t -> ('a, ('b, t) app) app
   let inj v = App v
   let prj (App v) = v
 end
 
 module Newtype3 (T : sig type ('a, 'b, 'c) t end) : sig
   type t
-  val inj : ('a, 'b, 'c) T.t -> ('c, ('b, ('a, t) app) app) app 
-  val prj : ('c, ('b, ('a, t) app) app) app -> ('a, 'b, 'c) T.t
+  val inj : ('a, 'b, 'c) T.t -> ('a, ('b, ('c, t) app) app) app 
+  val prj : ('a, ('b, ('c, t) app) app) app -> ('a, 'b, 'c) T.t
 end =
 struct
   type t
-  type (_, _) app += App : ('a, 'b, 'c) T.t -> ('c, ('b, ('a, t) app) app) app
+  type (_, _) app += App : ('a, 'b, 'c) T.t -> ('a, ('b, ('c, t) app) app) app
   let inj v = App v
   let prj (App v) = v
 end
 
 module Newtype4 (T : sig type ('a, 'b, 'c, 'd) t end) : sig
   type t
-  val inj : ('a, 'b, 'c, 'd) T.t -> ('d, ('c, ('b, ('a, t) app) app) app) app 
-  val prj : ('d, ('c, ('b, ('a, t) app) app) app) app -> ('a, 'b, 'c, 'd) T.t
+  val inj : ('a, 'b, 'c, 'd) T.t -> ('a, ('b, ('c, ('d, t) app) app) app) app 
+  val prj : ('a, ('b, ('c, ('d, t) app) app) app) app -> ('a, 'b, 'c, 'd) T.t
 end =
 struct
   type t
-  type (_, _) app += App : ('a, 'b, 'c, 'd) T.t -> ('d, ('c, ('b, ('a, t) app) app) app) app
+  type (_, _) app += App : ('a, 'b, 'c, 'd) T.t -> ('a, ('b, ('c, ('d, t) app) app) app) app
   let inj v = App v
   let prj (App v) = v
 end
 
 module Newtype5 (T : sig type ('a, 'b, 'c, 'd, 'e) t end) : sig
   type t
-  val inj : ('a, 'b, 'c, 'd, 'e) T.t -> ('e, ('d, ('c, ('b, ('a, t) app) app) app) app) app 
-  val prj : ('e, ('d, ('c, ('b, ('a, t) app) app) app) app) app -> ('a, 'b, 'c, 'd, 'e) T.t
+  val inj : ('a, 'b, 'c, 'd, 'e) T.t -> ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app 
+  val prj : ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app -> ('a, 'b, 'c, 'd, 'e) T.t
 end =
 struct
   type t
-  type (_, _) app += App : ('a, 'b, 'c, 'd, 'e) T.t -> ('e, ('d, ('c, ('b, ('a, t) app) app) app) app) app
+  type (_, _) app += App : ('a, 'b, 'c, 'd, 'e) T.t -> ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app
   let inj v = App v
   let prj (App v) = v
 end
