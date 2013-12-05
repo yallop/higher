@@ -23,7 +23,4 @@ uninstall:
 	${OCAMLFIND} remove higher
 
 clean:
-	rm higher.cmo
-	rm higher.cmx
-	rm higher.cmi
-	rm higher.o
+	rm -f higher.cmo higher.cmx higher.cmi higher.o
