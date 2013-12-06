@@ -44,3 +44,10 @@ module Newtype5 (T : sig type ('a, 'b, 'c, 'd, 'e) t end) : sig
   val inj : ('a, 'b, 'c, 'd, 'e) T.t -> ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app 
   val prj : ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app -> ('a, 'b, 'c, 'd, 'e) T.t
 end
+
+(** Construct a newtype for a type constructor with six parameters. *)
+module Newtype6 (T : sig type ('a, 'b, 'c, 'd, 'e, 'f) t end) : sig
+  type t
+  val inj : ('a, 'b, 'c, 'd, 'e, 'f) T.t -> ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app 
+  val prj : ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app -> ('a, 'b, 'c, 'd, 'e, 'f) T.t
+end

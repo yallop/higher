@@ -73,3 +73,16 @@ struct
   let inj v = App v
   let prj (App v) = v
 end
+
+module Newtype6 (T : sig type ('a, 'b, 'c, 'd, 'e, 'f) t end) : sig
+  type t
+  val inj : ('a, 'b, 'c, 'd, 'e, 'f) T.t -> ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app 
+  val prj : ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app -> ('a, 'b, 'c, 'd, 'e, 'f) T.t
+end
+ =
+struct
+  type t
+  type (_, _) app += App : ('a, 'b, 'c, 'd, 'e, 'f) T.t -> ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app
+  let inj v = App v
+  let prj (App v) = v
+end
