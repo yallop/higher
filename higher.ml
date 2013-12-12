@@ -54,6 +54,7 @@ end
 
 module Newtype0 (T : sig type t end) =
 struct
+  type s = T.t
   type t = Id of T.t
   let inj v = Id v
   let prj (Id v) = v
@@ -61,6 +62,7 @@ end
 
 module Newtype1 (T : sig type 'a t end) =
 struct
+  type 'a s = 'a T.t
   type t
   type (_, _) app += App : 'a T.t -> ('a, t) app
   let inj v = App v
@@ -69,6 +71,7 @@ end
 
 module Newtype2 (T : sig type ('a, 'b) t end) =
 struct
+  type ('a, 'b) s = ('a, 'b) T.t
   type t
   type (_, _) app += App : ('a, 'b) T.t -> ('a, ('b, t) app) app
   let inj v = App v
@@ -77,6 +80,7 @@ end
 
 module Newtype3 (T : sig type ('a, 'b, 'c) t end) =
 struct
+  type ('a, 'b, 'c) s = ('a, 'b, 'c) T.t
   type t
   type (_, _) app += App : ('a, 'b, 'c) T.t -> ('a, ('b, ('c, t) app) app) app
   let inj v = App v
@@ -85,6 +89,7 @@ end
 
 module Newtype4 (T : sig type ('a, 'b, 'c, 'd) t end) =
 struct
+  type ('a, 'b, 'c, 'd) s = ('a, 'b, 'c, 'd) T.t
   type t
   type (_, _) app += App : ('a, 'b, 'c, 'd) T.t -> ('a, ('b, ('c, ('d, t) app) app) app) app
   let inj v = App v
@@ -93,6 +98,7 @@ end
 
 module Newtype5 (T : sig type ('a, 'b, 'c, 'd, 'e) t end) =
 struct
+  type ('a, 'b, 'c, 'd, 'e) s = ('a, 'b, 'c, 'd, 'e) T.t
   type t
   type (_, _) app += App : ('a, 'b, 'c, 'd, 'e) T.t -> ('a, ('b, ('c, ('d, ('e, t) app) app) app) app) app
   let inj v = App v
@@ -101,6 +107,7 @@ end
 
 module Newtype6 (T : sig type ('a, 'b, 'c, 'd, 'e, 'f) t end) =
 struct
+  type ('a, 'b, 'c, 'd, 'e, 'f) s = ('a, 'b, 'c, 'd, 'e, 'f) T.t
   type t
   type (_, _) app += App : ('a, 'b, 'c, 'd, 'e, 'f) T.t -> ('a, ('b, ('c, ('d, ('e, ('f, t) app) app) app) app) app) app
   let inj v = App v
