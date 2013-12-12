@@ -1,26 +1,18 @@
 
-OCAMLC=ocamlc
-OCAMLOPT=ocamlopt
-OCAMLFIND=ocamlfind
+# Set OCamlMakefile to use
+export OCAMLMAKEFILE = ./OCamlMakefile
 
-INSTALL=META higher.cmi higher.cmo higher.cmx higher.o
+SOURCES=higher.mli higher.ml
 
-all: higher.cmo higher.cmx higher.cmi
+RESULT=higher
 
-higher.cmi : higher.mli
-	${OCAMLC} -c higher.mli
+LIBINSTALL_FILES := higher.mli higher.cmi \
+                    higher.cma \
+                    higher.cmx higher.cmxa higher.a
 
-higher.cmo : higher.ml higher.cmi
-	${OCAMLC} -c higher.ml
+all: byte-code-library native-code-library
 
-higher.cmx higher.o : higher.ml higher.cmi
-	${OCAMLOPT} -c higher.ml
+install: libinstall
+uninstall: libuninstall
 
-install: all
-	${OCAMLFIND} install higher ${INSTALL}
-
-uninstall:
-	${OCAMLFIND} remove higher
-
-clean:
-	rm -f higher.cmo higher.cmx higher.cmi higher.o
+include $(OCAMLMAKEFILE)

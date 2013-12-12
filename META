@@ -1,5 +1,5 @@
 version = "0.1.0"
 description = "Library for higher-kinded programming"
-archive(byte) = "higher.cmo"
-archive(native) = "higher.cmx"
-exists_if = "higher.cmo"
+archive(byte) = "higher.cma"
+archive(native) = "higher.cmxa"
+exists_if = "higher.cma"
