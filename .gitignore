@@ -5,3 +5,6 @@
 *.a
 *.cma
 *.cmxa
+._bcdi
+._d
+._ncdi
