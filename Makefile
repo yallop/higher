@@ -12,7 +12,10 @@ LIBINSTALL_FILES := higher.mli higher.cmi \
 
 all: byte-code-library native-code-library
 
-install: libinstall
+examples-install:
+	ocamlfind install -add higher examples/*
+
+install: libinstall examples-install
 uninstall: libuninstall
 
 include $(OCAMLMAKEFILE)
