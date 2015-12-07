@@ -8,12 +8,9 @@ RESULT=higher
 
 OCAMLFLAGS += $(shell ocamlc -bin-annot 2>/dev/null && echo -bin-annot)
 
-LIBINSTALL_FILES := higher.mli higher.cmi \
-                    higher.cma
-
+LIBINSTALL_FILES := higher.mli higher.cmi higher.cma
 LIBINSTALL_OPTIONAL_FILES := higher.cmt higher.cmti
-NATIVE_LIBINSTALL_FILES := \
-                    higher.cmx higher.cmxa higher.a
+NATIVE_LIBINSTALL_FILES := higher.cmx higher.cmxa higher.a
 
 all: byte-code-library native-code-library
 
