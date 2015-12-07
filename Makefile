@@ -6,9 +6,12 @@ SOURCES=higher.mli higher.ml
 
 RESULT=higher
 
+OCAMLFLAGS += $(shell ocamlc -bin-annot 2>/dev/null && echo -bin-annot)
+
 LIBINSTALL_FILES := higher.mli higher.cmi \
                     higher.cma
 
+LIBINSTALL_OPTIONAL_FILES := higher.cmt higher.cmti
 NATIVE_LIBINSTALL_FILES := \
                     higher.cmx higher.cmxa higher.a
 
@@ -18,7 +21,8 @@ meta-install:
 	$(OCAMLFIND) install higher META
 
 byte-code-lib-install: byte-code-library
-	ocamlfind install -add higher $(LIBINSTALL_FILES)
+	ocamlfind install -add higher $(LIBINSTALL_FILES) \
+           -optional $(LIBINSTALL_OPTIONAL_FILES)
 
 examples-install:
 	ocamlfind install -add higher examples/*
