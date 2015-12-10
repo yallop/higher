@@ -6,13 +6,8 @@ bug-reports: "https://github.com/ocamllabs/higher/issues"
 dev-repo: "https://github.com/ocamllabs/higher.git"
 license: "MIT"
 build: [
-  [make]        {ocaml-native}
-  [make "bcl"] {!ocaml-native}
+  "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
+                         "native-dynlink=%{ocaml-native-dynlink}%"
 ]
-install: [
-  [make "native-install"]     {ocaml-native}
-  [make "byte-code-install"] {!ocaml-native}
-]
-remove: [["ocamlfind" "remove" "higher"]]
-depends: [ "ocamlfind" ]
+depends: [ "ocamlfind" "ocamlbuild" ]
 tags: ["org:ocamllabs"]
