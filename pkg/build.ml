@@ -7,6 +7,6 @@ let () =
       Pkg.lib "pkg/META";
       Pkg.lib ~exts:Exts.module_library "higher";
       Pkg.doc "README.md" ]
-      @ List.map (fun e -> Pkg.share ("examples/"^e))
+      @ List.map (fun e -> Pkg.doc ("examples/"^e))
         (Array.to_list (Sys.readdir "examples")))
 
