@@ -9,5 +9,5 @@ build: [
   "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
                          "native-dynlink=%{ocaml-native-dynlink}%"
 ]
-depends: [ "ocamlfind" "ocamlbuild" ]
+depends: [ "ocamlbuild" ]
 tags: ["org:ocamllabs"]

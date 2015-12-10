@@ -3,7 +3,7 @@
 #use "topkg.ml"
 
 let () = 
-  Pkg.describe "higher" ~builder:(`OCamlbuild []) ([
+  Pkg.describe "higher" ~builder:(`OCamlbuild_no_ocamlfind []) ([
       Pkg.lib "pkg/META";
       Pkg.lib ~exts:Exts.module_library "higher";
       Pkg.doc "README.md" ]
