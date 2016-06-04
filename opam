@@ -7,7 +7,7 @@ dev-repo: "https://github.com/ocamllabs/higher.git"
 license: "MIT"
 build:
 [[ "ocaml" "pkg/pkg.ml" "build"
-           "installer" "true" ]]
+           "--installer" "true" ]]
 depends: [
   "ocamlbuild" {build}
   "ocamlfind" {build}
