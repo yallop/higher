@@ -1,6 +1,8 @@
 higher
 ======
 
+[![Travis build Status](https://travis-ci.org/ocamllabs/higher.svg?branch=master)](https://travis-ci.org/ocamllabs/higher) 
+
 Higher-kinded programming in OCaml, as described in
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Lightweight Higher-Kinded Polymorphism][flops-2014-paper]<br/>
