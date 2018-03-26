@@ -15,4 +15,17 @@ You can install higher using `opam`:
 opam install higher
 ```
 
+Implementations in other languages
+----------------------------------
+
+* [fp-ts (TypeScript)](https://github.com/gcanti/fp-ts)
+* [flow-static-land (Flow)](https://github.com/gcanti/flow-static-land)
+* [hkt (Java)](https://github.com/derive4j/hkt)
+* [KindedJ (cross-language JVM)](https://github.com/KindedJ/KindedJ)
+* [elm-brands (Elm)](https://github.com/joneshf/elm-brands)
+* [Higher (F#)](https://github.com/palladin/Higher)
+* [Arrow (Kotlin)](http://arrow-kt.io/docs/patterns/error_handling/)
+* [HKT.swift (Swift)](https://gist.github.com/anandabits/f12a77c49fc002cf68a5f1f62a0ac9c4)
+
+
 [flops-2014-paper]: https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf
