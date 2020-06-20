@@ -28,5 +28,6 @@ Implementations in other languages
 * [HKT.swift (Swift)](https://gist.github.com/anandabits/f12a77c49fc002cf68a5f1f62a0ac9c4)
 * [HigherKindedPolymorphisms (Julia)](https://github.com/thautwarm/HigherKindedPolymorphisms.jl)
 * [fp-core (rust)](https://github.com/JasonShin/fp-core.rs/blob/4564c429/README.md#higher-kinded-type-hkt)
+* [Higher Standard (SML)](https://github.com/mmcqd/higher-standard)
 
 [flops-2014-paper]: https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf
