@@ -25,6 +25,7 @@ Implementations in other languages
 * [elm-brands (Elm)](https://github.com/joneshf/elm-brands)
 * [Higher (F#)](https://github.com/palladin/Higher)
 * [Arrow (Kotlin)](http://arrow-kt.io/docs/patterns/error_handling/)
+* [Bow (Swift)](https://bow-swift.io/docs/fp-concepts/higher-kinded-types/)
 * [HKT.swift (Swift)](https://gist.github.com/anandabits/f12a77c49fc002cf68a5f1f62a0ac9c4)
 * [HigherKindedPolymorphisms (Julia)](https://github.com/thautwarm/HigherKindedPolymorphisms.jl)
 * [fp-core (rust)](https://github.com/JasonShin/fp-core.rs/blob/4564c429/README.md#higher-kinded-type-hkt)
