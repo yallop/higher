@@ -1,7 +1,7 @@
 higher
 ======
 
-[![Travis build Status](https://travis-ci.org/ocamllabs/higher.svg?branch=master)](https://travis-ci.org/ocamllabs/higher) 
+![Build Status](https://github.com/ocamllabs/higher/workflows/Higher%20tests/badge.svg)
 
 Higher-kinded programming in OCaml, as described in
 
