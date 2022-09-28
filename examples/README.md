@@ -1,6 +1,6 @@
 The code in this directory is taken from the paper "[Lightweight Higher-Kinded Polymorphism][higher-paper]" (Jeremy Yallop and Leo White).  The following examples are available:
 
-[higher-paper]: https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf
+[higher-paper]: https://www.cl.cam.ac.uk/~jdy22/papers/lightweight-higher-kinded-polymorphism.pdf
 
 * [typed defunctionalization](typed-defunctionalization.ml) (Section 1.2)
 * [folds over perfect trees](example-1-perfect-trees.ml) (Section 2.1)
@@ -24,5 +24,5 @@ Most of the code depends on the [higher][higher] library, which you can install 
   # 
 ```
 
-[higher]: https://github.com/ocamllabs/higher
+[higher]: https://github.com/yallop/higher
 [opam]: http://opam.ocaml.org/

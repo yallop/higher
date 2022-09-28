@@ -1,7 +1,7 @@
 higher
 ======
 
-![Build Status](https://github.com/ocamllabs/higher/workflows/Higher%20tests/badge.svg)
+![Build Status](https://github.com/yallop/higher/workflows/Higher%20tests/badge.svg)
 
 Higher-kinded programming in OCaml, as described in
 
@@ -31,4 +31,4 @@ Implementations in other languages
 * [fp-core (rust)](https://github.com/JasonShin/fp-core.rs/blob/4564c429/README.md#higher-kinded-type-hkt)
 * [Higher Standard (SML)](https://github.com/mmcqd/higher-standard)
 
-[flops-2014-paper]: https://ocamllabs.github.io/higher/lightweight-higher-kinded-polymorphism.pdf
+[flops-2014-paper]: https://www.cl.cam.ac.uk/~jdy22/papers/lightweight-higher-kinded-polymorphism.pdf
