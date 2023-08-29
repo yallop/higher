@@ -30,5 +30,6 @@ Implementations in other languages
 * [HigherKindedPolymorphisms (Julia)](https://github.com/thautwarm/HigherKindedPolymorphisms.jl)
 * [fp-core (rust)](https://github.com/JasonShin/fp-core.rs/blob/4564c429/README.md#higher-kinded-type-hkt)
 * [Higher Standard (SML)](https://github.com/mmcqd/higher-standard)
+* [object-algebras (C#)](https://github.com/tgrospic/object-algebras)
 
 [flops-2014-paper]: https://www.cl.cam.ac.uk/~jdy22/papers/lightweight-higher-kinded-polymorphism.pdf
