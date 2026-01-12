@@ -14,7 +14,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        ocaml-version:
+        ocaml-compiler:
           - 4.02.0
           - 4.03.0
           - 4.05.0
@@ -27,12 +27,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Use OCaml ${{ matrix.ocaml-version }}
-        uses: avsm/setup-ocaml@v1
+      - name: Use OCaml ${{ matrix.ocaml-compiler }}
+        uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-version: ${{ matrix.ocaml-version }}
+          ocaml-compiler: ${{ matrix.ocaml-compiler }}
 
       - name: Deps
         run: opam pin add -n higher .
